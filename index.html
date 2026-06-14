@@ -210,6 +210,15 @@
   .contact .links a:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-3px)}
   .contact .links a:hover .d{color:#fff}
   footer{padding:34px 32px;text-align:center;color:var(--faint);font-size:.86rem;font-weight:500}
+
+  /* ---- language switch ---- */
+  .lang-switch{display:flex;gap:1px;align-items:center;background:rgba(0,0,0,.05);border:1px solid var(--line);border-radius:999px;padding:3px}
+  nav.scrolled .lang-switch{background:rgba(0,0,0,.05)}
+  .lang-switch button{font-family:var(--display);font-size:.74rem;font-weight:700;color:var(--muted);background:none;border:0;padding:6px 10px;border-radius:999px;cursor:pointer;transition:.2s var(--ease);line-height:1;white-space:nowrap}
+  .lang-switch button:hover{color:var(--ink)}
+  .lang-switch button.on{background:var(--accent);color:#fff}
+  [dir="rtl"]{text-align:right}
+  @media(max-width:640px){.lang-switch button{padding:5px 7px;font-size:.68rem}}
 </style>
 </head>
 <body>
@@ -218,11 +227,14 @@
 
 <nav id="nav">
   <div class="in">
-    <a href="#top" class="brand"><span class="dot"></span>임주혁</a>
+    <a href="#top" class="brand"><span class="dot"></span><span data-i18n="name">임주혁</span></a>
     <div class="nav-links">
-      <a href="#exp">여정</a>
-      <a href="#proj">프로젝트</a>
-      <a href="#contact">연락</a>
+      <a href="#exp" data-i18n="nav_journey">여정</a>
+      <a href="#proj" data-i18n="nav_projects">프로젝트</a>
+      <a href="#contact" data-i18n="nav_contact">연락</a>
+    </div>
+    <div class="lang-switch" id="langSwitch">
+      <button data-lang="ko" class="on">KO</button><button data-lang="en">EN</button><button data-lang="zh">中文</button><button data-lang="ru">RU</button><button data-lang="ar">AR</button>
     </div>
   </div>
 </nav>
@@ -233,9 +245,9 @@
   <div class="hero-inner">
     <div>
       <div class="kicker ha" style="--d:.05s">Business Planning · Offer-ator · Public–Private–Industry–Academia</div>
-      <h1><span class="ln"><i>임주혁</i></span><small class="ha" style="--d:.5s">IM JUHYUK</small></h1>
-      <div class="role ha" style="--d:.6s"><span class="nb">사업 기획</span> · <span class="nb">국내외 전문 <b>오퍼레이터(Offer-ator)</b></span> · <span class="nb">민관산학 거버넌스</span></div>
-      <p class="lead ha" style="--d:.7s">사람과 사람 사이를 잇습니다.<br>그 과정에서 <span class="nb">필요한 일</span>, <span class="nb">하고 싶은 일</span>을 돕습니다.<br>모든 일은 <b>믿음</b>과 <b>올바름</b>, 이 두 가지를 묻습니다.<br><span class="nb">국가와 국가 사이</span>도 다르지 않습니다.</p>
+      <h1><span class="ln"><i data-i18n="name">임주혁</i></span><small class="ha" style="--d:.5s">IM JUHYUK</small></h1>
+      <div class="role ha" style="--d:.6s" data-i18n="role"><span class="nb">사업 기획</span> · <span class="nb">국내외 전문 <b>오퍼레이터(Offer-ator)</b></span> · <span class="nb">민관산학 거버넌스</span></div>
+      <p class="lead ha" style="--d:.7s" data-i18n="lead">사람과 사람 사이를 잇습니다.<br>그 과정에서 <span class="nb">필요한 일</span>, <span class="nb">하고 싶은 일</span>을 돕습니다.<br>모든 일은 <b>믿음</b>과 <b>올바름</b>, 이 두 가지를 묻습니다.<br><span class="nb">국가와 국가 사이</span>도 다르지 않습니다.</p>
       <div class="contact-inline ha" style="--d:.8s">
         <a href="mailto:juehyuk@gmail.com"><span class="d">✦</span> juehyuk@gmail.com</a>
         <a href="tel:+821062712694"><span class="d">✦</span> 010-6271-2694</a>
@@ -250,7 +262,7 @@
 
 <!-- MARQUEE -->
 <div class="marquee">
-  <div class="track">
+  <div class="track" data-i18n="marquee">
     <span class="it">사람을 잇다</span><span class="it">오퍼레이터</span><span class="it">민관산학 거버넌스</span><span class="it">수출</span><span class="it">타당성 조사</span><span class="it">정책연구</span><span class="it">믿음과 올바름</span><span class="it">국가 간 교류</span>
     <span class="it">사람을 잇다</span><span class="it">오퍼레이터</span><span class="it">민관산학 거버넌스</span><span class="it">수출</span><span class="it">타당성 조사</span><span class="it">정책연구</span><span class="it">믿음과 올바름</span><span class="it">국가 간 교류</span>
   </div>
@@ -260,10 +272,10 @@
 <div class="strip">
   <div class="wrap">
     <div class="stats">
-      <div class="stat rv"><div class="v"><span class="count" data-to="200">0</span>만불</div><div class="l">’26 상반기<br>수출실적 달성</div></div>
-      <div class="stat rv d1"><div class="v"><span class="count" data-to="2">0</span>회</div><div class="l">산자부·중기부<br>장관상 수상</div></div>
-      <div class="stat rv d2"><div class="v ink">학·석·박</div><div class="l">인하대학교<br>학사 · 석사 · 박사(예정)</div></div>
-      <div class="stat rv d3"><div class="v ink">해병 만기제대</div><div class="l">전남외국어고<br>전교학생회장</div></div>
+      <div class="stat rv"><div class="v" data-i18n="s1v">200만불</div><div class="l" data-i18n="s1l">’26 상반기<br>수출실적 달성</div></div>
+      <div class="stat rv d1"><div class="v" data-i18n="s2v">2회</div><div class="l" data-i18n="s2l">산자부·중기부<br>장관상 수상</div></div>
+      <div class="stat rv d2"><div class="v ink" data-i18n="s3v">학·석·박</div><div class="l" data-i18n="s3l">인하대학교<br>학사 · 석사 · 박사(예정)</div></div>
+      <div class="stat rv d3"><div class="v ink" data-i18n="s4v">해병 만기제대</div><div class="l" data-i18n="s4l">전남외국어고<br>전교학생회장</div></div>
     </div>
   </div>
 </div>
@@ -271,48 +283,48 @@
 <!-- SUMMARY -->
 <section id="summary">
   <div class="wrap">
-    <div class="sec-head rv"><span class="no">01</span><h2>한 줄 소개</h2><span class="en">Summary</span></div>
-    <p class="summary-big rv d1">필요한 물건, 필요한 일, 필요한 사람 — <b>필요한 모든 것의 왕래</b>를 돕습니다.</p>
+    <div class="sec-head rv"><span class="no">01</span><h2 data-i18n="summary_h2">한 줄 소개</h2><span class="en">Summary</span></div>
+    <p class="summary-big rv d1" data-i18n="summary_text">필요한 물건, 필요한 일, 필요한 사람 — <b>필요한 모든 것의 왕래</b>를 돕습니다.</p>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="exp">
   <div class="wrap">
-    <div class="sec-head rv"><span class="no">02</span><h2>커리어 여정</h2><span class="en">Journey</span></div>
-    <p class="pdesc rv d1" style="max-width:700px;margin-bottom:48px;font-size:1.12rem;color:var(--ink-2)">브랜드를 ‘쓰는’ 일에서 시작해, 사업을 ‘키우는’ 일로, 그리고 국회에서 일을 ‘매듭짓는’ 자리까지 — 한 단계씩 영역을 넓혀왔습니다.</p>
+    <div class="sec-head rv"><span class="no">02</span><h2 data-i18n="journey_h2">커리어 여정</h2><span class="en">Journey</span></div>
+    <p class="pdesc rv d1" style="max-width:700px;margin-bottom:48px;font-size:1.12rem;color:var(--ink-2)" data-i18n="journey_intro">브랜드를 ‘쓰는’ 일에서 시작해, 사업을 ‘키우는’ 일로, 그리고 국회에서 일을 ‘매듭짓는’ 자리까지 — 한 단계씩 영역을 넓혀왔습니다.</p>
     <div class="tl">
       <div class="tl-item rv">
-        <div><div class="yr"><span class="ch-no">01</span><span class="ch-th"><svg class="ch-ic" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>쓰고</span><span class="ch-en">Write</span></div><div class="org">칸투칸 · 상장 브랜드</div></div>
+        <div><div class="yr"><span class="ch-no">01</span><span class="ch-th"><svg class="ch-ic" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>쓰고</span><span class="ch-en">Write</span></div><div class="org" data-i18n="org1">칸투칸 · 상장 브랜드</div></div>
         <div>
-          <h3>브랜드 카피라이터 <span class="ar">↗</span></h3>
-          <p class="pdesc">상장사 브랜드 카피라이터로 <b>커리어를 시작</b>했습니다. 말과 글로 브랜드를 설득하는 법을 익혔습니다.</p>
+          <h3><span data-i18n="role1">브랜드 카피라이터</span> <span class="ar">↗</span></h3>
+          <p class="pdesc" data-i18n="narr1">상장사 브랜드 카피라이터로 <b>커리어를 시작</b>했습니다. 말과 글로 브랜드를 설득하는 법을 익혔습니다.</p>
           <ul>
-            <li>브랜드 마케팅 콘텐츠 제작 및 카피라이팅·홍보 자료 기획</li>
-            <li class="win"><b>매출 전환·브랜드 강화 마케팅 자료 100여 건 제작</b></li>
+            <li data-i18n="b1a">브랜드 마케팅 콘텐츠 제작 및 카피라이팅·홍보 자료 기획</li>
+            <li class="win" data-i18n="b1b"><b>매출 전환·브랜드 강화 마케팅 자료 100여 건 제작</b></li>
           </ul>
         </div>
       </div>
       <div class="tl-item rv">
-        <div><div class="yr"><span class="ch-no">02</span><span class="ch-th"><svg class="ch-ic" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>키우고</span><span class="ch-en">Build</span></div><div class="org">스타트업 ‘쉽지않은’ (Sheeps)</div></div>
+        <div><div class="yr"><span class="ch-no">02</span><span class="ch-th"><svg class="ch-ic" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>키우고</span><span class="ch-en">Build</span></div><div class="org" data-i18n="org2">스타트업 ‘쉽지않은’ (Sheeps)</div></div>
         <div>
-          <h3>스타트업 마케팅 팀장 <span class="ar">↗</span></h3>
-          <p class="pdesc">스타트업으로 자리를 옮겨 <b>마케팅을 담당</b>하며, 글을 쓰던 사람에서 사업을 키우는 사람으로 나아갔습니다.</p>
+          <h3><span data-i18n="role2">스타트업 마케팅 팀장</span> <span class="ar">↗</span></h3>
+          <p class="pdesc" data-i18n="narr2">스타트업으로 자리를 옮겨 <b>마케팅을 담당</b>하며, 글을 쓰던 사람에서 사업을 키우는 사람으로 나아갔습니다.</p>
           <ul>
-            <li>스타트업 마케팅 전략 수립 및 운영</li>
-            <li>사회적 기업 성장 지원 교육 프로그램 기획 · 대학 강의 운영</li>
-            <li class="win"><b>2020 예비창업자 패키지 선정</b></li>
+            <li data-i18n="b2a">스타트업 마케팅 전략 수립 및 운영</li>
+            <li data-i18n="b2b">사회적 기업 성장 지원 교육 프로그램 기획 · 대학 강의 운영</li>
+            <li class="win" data-i18n="b2c"><b>2020 예비창업자 패키지 선정</b></li>
           </ul>
         </div>
       </div>
       <div class="tl-item rv">
-        <div><div class="yr"><span class="ch-no">03</span><span class="ch-th"><svg class="ch-ic" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>맺고</span><span class="ch-en">Conclude</span></div><div class="org">대한민국 국회 · 국회의원실</div></div>
+        <div><div class="yr"><span class="ch-no">03</span><span class="ch-th"><svg class="ch-ic" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>맺고</span><span class="ch-en">Conclude</span></div><div class="org" data-i18n="org3">대한민국 국회 · 국회의원실</div></div>
         <div>
-          <h3>입법 조사 · 의정 보좌 <span class="ar">↗</span></h3>
-          <p class="pdesc">대한민국 국회에서 <b>입법을 조사하고 의정을 보좌</b>하며, 사람과 제도 사이에서 일을 매듭짓는 법을 익혔습니다.</p>
+          <h3><span data-i18n="role3">입법 조사 · 의정 보좌</span> <span class="ar">↗</span></h3>
+          <p class="pdesc" data-i18n="narr3">대한민국 국회에서 <b>입법을 조사하고 의정을 보좌</b>하며, 사람과 제도 사이에서 일을 매듭짓는 법을 익혔습니다.</p>
           <ul>
-            <li>정책·법안 관련 조사 및 입법 실무 지원</li>
-            <li>교육 정책 관련 업무 수행</li>
+            <li data-i18n="b3a">정책·법안 관련 조사 및 입법 실무 지원</li>
+            <li data-i18n="b3b">교육 정책 관련 업무 수행</li>
           </ul>
         </div>
       </div>
@@ -323,36 +335,36 @@
 <!-- PROJECTS -->
 <section id="proj">
   <div class="wrap">
-    <div class="sec-head rv"><span class="no">03</span><h2>주요 프로젝트</h2><span class="en">Projects</span></div>
-    <p class="pdesc rv d1" style="max-width:700px;margin-bottom:48px;font-size:1.12rem;color:var(--ink-2)">민관·산업·학계를 잇는 <b class="nb">민관산학 거버넌스</b> 과제를 기획하고 수행합니다.</p>
+    <div class="sec-head rv"><span class="no">03</span><h2 data-i18n="projects_h2">주요 프로젝트</h2><span class="en">Projects</span></div>
+    <p class="pdesc rv d1" style="max-width:700px;margin-bottom:48px;font-size:1.12rem;color:var(--ink-2)" data-i18n="projects_intro">민관·산업·학계를 잇는 <b class="nb">민관산학 거버넌스</b> 과제를 기획하고 수행합니다.</p>
     <div class="tl">
       <div class="tl-item rv">
-        <div><div class="yr">F/S</div><div class="org">뉴홍콩시티 프로젝트</div></div>
+        <div><div class="yr">F/S</div><div class="org" data-i18n="p1_org">뉴홍콩시티 프로젝트</div></div>
         <div>
-          <h3>뉴홍콩시티 프로젝트 타당성 조사 용역 <span class="ar">↗</span></h3>
-          <p class="pdesc">뉴홍콩시티 프로젝트의 사업 타당성 조사(F/S) 용역을 수행했습니다.</p>
+          <h3><span data-i18n="p1_title">뉴홍콩시티 프로젝트 타당성 조사 용역</span> <span class="ar">↗</span></h3>
+          <p class="pdesc" data-i18n="p1_desc">뉴홍콩시티 프로젝트의 사업 타당성 조사(F/S) 용역을 수행했습니다.</p>
           <div class="tags">
-            <span class="tag">타당성 조사 (F/S)</span><span class="tag">민관산학 거버넌스</span><span class="tag">정책·용역과제</span>
+            <span data-i18n="p1_tags"><span class="tag">타당성 조사 (F/S)</span><span class="tag">민관산학 거버넌스</span><span class="tag">정책·용역과제</span></span>
           </div>
         </div>
       </div>
       <div class="tl-item rv">
-        <div><div class="yr">2024.02</div><div class="org">인천광역시 강화군</div></div>
+        <div><div class="yr">2024.02</div><div class="org" data-i18n="p2_org">인천광역시 강화군</div></div>
         <div>
-          <h3>강화군 탄소중립 녹색성장 기본계획 수립 용역 <span class="ar">↗</span></h3>
-          <p class="pdesc">강화군의 2050 탄소중립 달성을 위한 녹색성장 기본계획(2025–2034) 수립 용역. 기후변화 대응 동향·여건 분석, 부문별 온실가스 배출 현황 및 감축 로드맵, 강화군 탄소중립 비전·목표와 군민참여 활성화 방안을 다뤘습니다.</p>
+          <h3><span data-i18n="p2_title">강화군 탄소중립 녹색성장 기본계획 수립 용역</span> <span class="ar">↗</span></h3>
+          <p class="pdesc" data-i18n="p2_desc">강화군의 2050 탄소중립 달성을 위한 녹색성장 기본계획(2025–2034) 수립 용역. 기후변화 대응 동향·여건 분석, 부문별 온실가스 배출 현황 및 감축 로드맵, 강화군 탄소중립 비전·목표와 군민참여 활성화 방안을 다뤘습니다.</p>
           <div class="tags">
-            <span class="tag">탄소중립 · 녹색성장</span><span class="tag">공공 용역과제</span><span class="tag">온실가스 감축 로드맵</span><span class="tag">군민참여 계획</span>
+            <span data-i18n="p2_tags"><span class="tag">탄소중립 · 녹색성장</span><span class="tag">공공 용역과제</span><span class="tag">온실가스 감축 로드맵</span><span class="tag">군민참여 계획</span></span>
           </div>
         </div>
       </div>
       <div class="tl-item rv">
-        <div><div class="yr">2022.12</div><div class="org">2022 인천창업포럼 정책연구지원사업<br>인하대학교 경영대학</div></div>
+        <div><div class="yr">2022.12</div><div class="org" data-i18n="p3_org">2022 인천창업포럼 정책연구지원사업<br>인하대학교 경영대학</div></div>
         <div>
-          <h3>계양 테크노밸리 창업 활성화 방안 정책연구 <span class="ar">↗</span></h3>
-          <p class="pdesc">계양 테크노밸리에 적합한 창업 활성화 방안 수립 정책연구. 국내외 혁신클러스터 성공사례와 국내 테크노밸리 현황을 비교 분석하고, 계양지구 핵심·권장업종(안)과 한국판 뉴딜(디지털·그린) 연계 방향을 제안했습니다.</p>
+          <h3><span data-i18n="p3_title">계양 테크노밸리 창업 활성화 방안 정책연구</span> <span class="ar">↗</span></h3>
+          <p class="pdesc" data-i18n="p3_desc">계양 테크노밸리에 적합한 창업 활성화 방안 수립 정책연구. 국내외 혁신클러스터 성공사례와 국내 테크노밸리 현황을 비교 분석하고, 계양지구 핵심·권장업종(안)과 한국판 뉴딜(디지털·그린) 연계 방향을 제안했습니다.</p>
           <div class="tags">
-            <span class="tag">정책연구</span><span class="tag">혁신클러스터 분석</span><span class="tag">창업 활성화 전략</span><span class="tag">산업·고용 데이터 분석</span>
+            <span data-i18n="p3_tags"><span class="tag">정책연구</span><span class="tag">혁신클러스터 분석</span><span class="tag">창업 활성화 전략</span><span class="tag">산업·고용 데이터 분석</span></span>
           </div>
         </div>
       </div>
@@ -365,8 +377,8 @@
   <div class="contact-wrap">
     <div class="contact rv">
       <div class="glow"></div>
-      <h2>어떤 일을 <span class="sp">잇고</span><br>싶으신가요?</h2>
-      <p>무엇이든 맡겨주세요. 사람과 일, 그 사이를 잇겠습니다.</p>
+      <h2 data-i18n="contact_h2">어떤 일을 <span class="sp">잇고</span><br>싶으신가요?</h2>
+      <p data-i18n="contact_p">무엇이든 맡겨주세요. 사람과 일, 그 사이를 잇겠습니다.</p>
       <div class="links">
         <a href="mailto:juehyuk@gmail.com"><span class="d">✦</span> juehyuk@gmail.com</a>
         <a href="tel:+821062712694"><span class="d">✦</span> 010-6271-2694</a>
@@ -447,5 +459,15 @@
 })();
 </script>
 
+<script>
+const I18N={"name":{"ko":"임주혁","en":"Jack","zh":"Jack","ru":"Jack","ar":"Jack"},"nav_journey": {"ko": "여정", "en": "Journey", "zh": "历程", "ru": "Путь", "ar": "المسيرة"}, "nav_projects": {"ko": "프로젝트", "en": "Projects", "zh": "项目", "ru": "Проекты", "ar": "المشاريع"}, "nav_contact": {"ko": "연락", "en": "Contact", "zh": "联系", "ru": "Контакты", "ar": "تواصل"}, "role": {"ko": "<span class=\"nb\">사업 기획</span> · <span class=\"nb\">국내외 전문 <b>오퍼레이터(Offer-ator)</b></span> · <span class=\"nb\">민관산학 거버넌스</span>", "en": "Business Planning · Global <b>Offer-ator</b> · Public–Private–Industry–Academia Governance", "zh": "事业规划 · 国内外专业 <b>对接操盘手 (Offer-ator)</b> · 政产学研治理", "ru": "Бизнес-планирование · профессиональный <b>оператор сделок (Offer-ator)</b> · управление «власть–бизнес–наука»", "ar": "تخطيط الأعمال · <b>مُيسِّر صفقات محترف (Offer-ator)</b> · حوكمة القطاعات العامة والخاصة والصناعية والأكاديمية"}, "lead": {"ko": "사람과 사람 사이를 잇습니다.<br>그 과정에서 <span class=\"nb\">필요한 일</span>, <span class=\"nb\">하고 싶은 일</span>을 돕습니다.<br>모든 일은 <b>믿음</b>과 <b>올바름</b>, 이 두 가지를 묻습니다.<br><span class=\"nb\">국가와 국가 사이</span>도 다르지 않습니다.", "en": "I connect people to people.<br>Along the way, I help with what is needed — and what is wanted.<br>Every endeavor asks two things: <b>trust</b> and <b>integrity</b>.<br>Between nations, it is no different.", "zh": "我连接人与人。<br>在此过程中，助力所需之事与所愿之事。<br>所有事都叩问两点：<b>信任</b>与<b>正直</b>。<br>国与国之间，亦无不同。", "ru": "Я соединяю людей с людьми.<br>На этом пути помогаю с тем, что нужно и чего хотят.<br>В основе любого дела два вопроса: <b>доверие</b> и <b>честность</b>.<br>Между странами — точно так же.", "ar": "أَصِلُ بين الناس.<br>وعلى هذا الطريق أُعينُ في ما يَلزم وما يُراد.<br>كلُّ عملٍ يقوم على أمرين: <b>الثقة</b> و<b>الاستقامة</b>.<br>وما بين الدول لا يختلف."}, "marquee": {"ko": "<span class=\"it\">사람을 잇다</span><span class=\"it\">오퍼레이터</span><span class=\"it\">민관산학 거버넌스</span><span class=\"it\">수출</span><span class=\"it\">타당성 조사</span><span class=\"it\">정책연구</span><span class=\"it\">믿음과 올바름</span><span class=\"it\">국가 간 교류</span>", "en": "<span class=\"it\">Connecting people</span><span class=\"it\">Offer-ator</span><span class=\"it\">PPP–Academia Governance</span><span class=\"it\">Export</span><span class=\"it\">Feasibility Study</span><span class=\"it\">Policy Research</span><span class=\"it\">Trust &amp; Integrity</span><span class=\"it\">Cross-border exchange</span>", "zh": "<span class=\"it\">连接人与人</span><span class=\"it\">对接操盘手</span><span class=\"it\">政产学研治理</span><span class=\"it\">出口</span><span class=\"it\">可行性研究</span><span class=\"it\">政策研究</span><span class=\"it\">信任与正直</span><span class=\"it\">跨国交流</span>", "ru": "<span class=\"it\">Соединяю людей</span><span class=\"it\">Offer-ator</span><span class=\"it\">Управление PPP–наука</span><span class=\"it\">Экспорт</span><span class=\"it\">ТЭО</span><span class=\"it\">Политисследования</span><span class=\"it\">Доверие и честность</span><span class=\"it\">Межгос. обмен</span>", "ar": "<span class=\"it\">أَصِلُ بين الناس</span><span class=\"it\">مُيسّر صفقات</span><span class=\"it\">حوكمة القطاعات</span><span class=\"it\">تصدير</span><span class=\"it\">دراسة جدوى</span><span class=\"it\">بحوث السياسات</span><span class=\"it\">الثقة والاستقامة</span><span class=\"it\">تبادل عابر للحدود</span>"}, "s1v": {"ko": "200만불", "en": "$2M", "zh": "200万美元", "ru": "$2 млн", "ar": "٢ مليون $"}, "s1l": {"ko": "’26 상반기<br>수출실적 달성", "en": "H1 2026<br>export sales achieved", "zh": "2026上半年<br>出口业绩达成", "ru": "1-е полугодие 2026<br>экспортные продажи", "ar": "النصف الأول 2026<br>تحقيق مبيعات التصدير"}, "s2v": {"ko": "2회", "en": "×2", "zh": "2次", "ru": "×2", "ar": "×٢"}, "s2l": {"ko": "산자부·중기부<br>장관상 수상", "en": "Minister’s Awards<br>(MOTIE · MSS)", "zh": "产业部·中小企业部<br>部长奖", "ru": "Награды министров<br>(MOTIE · MSS)", "ar": "جوائز وزارية<br>(الصناعة · المنشآت الصغيرة)"}, "s3v": {"ko": "학·석·박", "en": "BA·MA·PhD", "zh": "学·硕·博", "ru": "Бак·Маг·PhD", "ar": "بكالوريوس·ماجستير·دكتوراه"}, "s3l": {"ko": "인하대학교<br>학사 · 석사 · 박사(예정)", "en": "Inha University<br>BA · MA · PhD (expected)", "zh": "仁荷大学<br>学士 · 硕士 · 博士(预定)", "ru": "Университет Инха<br>бакалавр · магистр · PhD (план)", "ar": "جامعة إنها<br>بكالوريوس · ماجستير · دكتوراه (مرتقب)"}, "s4v": {"ko": "해병 만기제대", "en": "Marine Corps", "zh": "海军陆战队", "ru": "Морская пехота", "ar": "مشاة البحرية"}, "s4l": {"ko": "전남외국어고<br>전교학생회장", "en": "Honorable discharge<br>· HS student-body president", "zh": "服役期满退伍<br>· 高中学生会长", "ru": "Почётное увольнение<br>· президент школьного совета", "ar": "تسريح مشرّف<br>· رئيس مجلس الطلبة"}, "summary_h2": {"ko": "한 줄 소개", "en": "In One Line", "zh": "一句话简介", "ru": "Коротко", "ar": "نبذة موجزة"}, "summary_text": {"ko": "필요한 물건, 필요한 일, 필요한 사람 — <b>필요한 모든 것의 왕래</b>를 돕습니다.", "en": "The goods you need, the work you need, the people you need — I help <b>everything that matters move where it should</b>.", "zh": "所需之物、所需之事、所需之人——助力<b>一切所需的往来流通</b>。", "ru": "Нужные товары, нужные дела, нужные люди — помогаю <b>всему необходимому находить свой путь</b>.", "ar": "البضائع التي تحتاجها، والأعمال التي تحتاجها، والأشخاص الذين تحتاجهم — أُيسِّر <b>حركة كلّ ما تحتاجه</b>."}, "journey_h2": {"ko": "커리어 여정", "en": "Career Journey", "zh": "职业历程", "ru": "Карьерный путь", "ar": "المسيرة المهنية"}, "journey_intro": {"ko": "브랜드를 ‘쓰는’ 일에서 시작해, 사업을 ‘키우는’ 일로, 그리고 국회에서 일을 ‘매듭짓는’ 자리까지 — 한 단계씩 영역을 넓혀왔습니다.", "en": "From <i>writing</i> for brands, to <i>building</i> businesses, to <i>closing the loop</i> on policy at the National Assembly — broadening the field one step at a time.", "zh": "从为品牌“执笔”，到“培育”事业，再到在国会“收束”政务——一步步拓展疆域。", "ru": "От «письма» для брендов — к «развитию» бизнеса — и к «завершению» дел в Национальной ассамблее: расширяя поле шаг за шагом.", "ar": "من «الكتابة» للعلامات التجارية، إلى «بناء» المشاريع، إلى «إنجاز» العمل في البرلمان — توسيعُ المجال خطوةً بخطوة."}, "org1": {"ko": "칸투칸 · 상장 브랜드", "en": "Kantukan · Listed Brand", "zh": "坎图坎 · 上市品牌", "ru": "Kantukan · публичный бренд", "ar": "كانتوكان · علامة مُدرَجة"}, "org2": {"ko": "스타트업 ‘쉽지않은’ (Sheeps)", "en": "Startup “Sheeps”", "zh": "创业公司 Sheeps", "ru": "Стартап «Sheeps»", "ar": "شركة ناشئة «Sheeps»"}, "org3": {"ko": "대한민국 국회 · 국회의원실", "en": "National Assembly of Korea · Lawmaker’s Office", "zh": "大韩民国国会 · 议员办公室", "ru": "Нац. ассамблея Кореи · аппарат депутата", "ar": "برلمان كوريا · مكتب نائب"}, "role1": {"ko": "브랜드 카피라이터", "en": "Brand Copywriter", "zh": "品牌文案", "ru": "Бренд-копирайтер", "ar": "كاتب إعلاني للعلامات"}, "role2": {"ko": "스타트업 마케팅 팀장", "en": "Startup Marketing Lead", "zh": "创业公司市场负责人", "ru": "Руководитель маркетинга стартапа", "ar": "قائد تسويق الشركة الناشئة"}, "role3": {"ko": "입법 조사 · 의정 보좌", "en": "Legislative Research · Parliamentary Aide", "zh": "立法调研 · 议政辅佐", "ru": "Законодательные исследования · помощник депутата", "ar": "بحث تشريعي · مساعدة برلمانية"}, "narr1": {"ko": "상장사 브랜드 카피라이터로 <b>커리어를 시작</b>했습니다. 말과 글로 브랜드를 설득하는 법을 익혔습니다.", "en": "<b>Began my career</b> as a copywriter for a listed company’s brand — learning to persuade through words and writing.", "zh": "以上市公司品牌文案<b>开启职业生涯</b>，学会用言语与文字打动受众。", "ru": "<b>Начал карьеру</b> копирайтером бренда публичной компании — научился убеждать словом и текстом.", "ar": "<b>بدأتُ مسيرتي</b> كاتبًا إعلانيًا لعلامة شركة مُدرَجة، وتعلّمتُ الإقناع بالكلمة والكتابة."}, "narr2": {"ko": "스타트업으로 자리를 옮겨 <b>마케팅을 담당</b>하며, 글을 쓰던 사람에서 사업을 키우는 사람으로 나아갔습니다.", "en": "Moved to a startup to <b>lead marketing</b> — growing from someone who wrote into someone who builds businesses.", "zh": "转入创业公司<b>负责市场营销</b>，从“执笔者”成长为“事业培育者”。", "ru": "Перешёл в стартап и <b>возглавил маркетинг</b> — превратившись из автора текстов в того, кто растит бизнес.", "ar": "انتقلتُ إلى شركة ناشئة <b>لقيادة التسويق</b>، فانتقلتُ من كاتبٍ إلى مَن يُنمّي الأعمال."}, "narr3": {"ko": "대한민국 국회에서 <b>입법을 조사하고 의정을 보좌</b>하며, 사람과 제도 사이에서 일을 매듭짓는 법을 익혔습니다.", "en": "At Korea’s National Assembly, I <b>researched legislation and supported parliamentary work</b> — learning to close the loop between people and institutions.", "zh": "在大韩民国国会<b>从事立法调研与议政辅佐</b>，学会在人与制度之间收束事务。", "ru": "В Нац. ассамблее Кореи <b>занимался законодательными исследованиями и помогал депутатской работе</b> — научился доводить дела до конца между людьми и институтами.", "ar": "في برلمان كوريا، <b>أجريتُ بحوثًا تشريعية وساعدتُ في العمل البرلماني</b>، وتعلّمتُ إنجاز الأمور بين الناس والمؤسسات."}, "b1a": {"ko": "브랜드 마케팅 콘텐츠 제작 및 카피라이팅·홍보 자료 기획", "en": "Produced brand marketing content; planned copywriting and PR materials", "zh": "制作品牌营销内容，策划文案与宣传物料", "ru": "Создавал бренд-контент; готовил копирайтинг и PR-материалы", "ar": "إنتاج محتوى تسويقي للعلامة وتخطيط النصوص ومواد العلاقات العامة"}, "b1b": {"ko": "<b>매출 전환·브랜드 강화 마케팅 자료 100여 건 제작</b>", "en": "<b>Created 100+ marketing assets driving conversion and brand strength</b>", "zh": "<b>制作100余件促进转化、强化品牌的营销物料</b>", "ru": "<b>Создал 100+ маркетинговых материалов для роста конверсии и бренда</b>", "ar": "<b>إنتاج أكثر من 100 مادة تسويقية لرفع التحويلات وتعزيز العلامة</b>"}, "b2a": {"ko": "스타트업 마케팅 전략 수립 및 운영", "en": "Built and ran startup marketing strategy", "zh": "制定并执行创业公司营销策略", "ru": "Разработка и ведение маркетинговой стратегии стартапа", "ar": "وضع وتشغيل استراتيجية تسويق الشركة الناشئة"}, "b2b": {"ko": "사회적 기업 성장 지원 교육 프로그램 기획 · 대학 강의 운영", "en": "Designed growth programs for social enterprises; ran university lectures", "zh": "策划社会企业成长支持教育项目，开展大学讲座", "ru": "Программы поддержки роста социальных предприятий; вузовские лекции", "ar": "تصميم برامج دعم نمو المؤسسات الاجتماعية وإلقاء محاضرات جامعية"}, "b2c": {"ko": "<b>2020 예비창업자 패키지 선정</b>", "en": "<b>Selected for the 2020 Pre-Startup Package (gov’t grant)</b>", "zh": "<b>入选2020预备创业者扶持计划（政府资助）</b>", "ru": "<b>Отобран в гос. программу Pre-Startup Package 2020</b>", "ar": "<b>الاختيار ضمن برنامج ما قبل التأسيس الحكومي 2020</b>"}, "b3a": {"ko": "정책·법안 관련 조사 및 입법 실무 지원", "en": "Researched policy and bills; supported legislative work", "zh": "政策与法案调研，立法实务支持", "ru": "Исследование политики и законопроектов; поддержка законотворчества", "ar": "بحوث في السياسات ومشاريع القوانين ودعم العمل التشريعي"}, "b3b": {"ko": "교육 정책 관련 업무 수행", "en": "Handled education-policy work", "zh": "负责教育政策相关工作", "ru": "Работа по образовательной политике", "ar": "تنفيذ أعمال متعلقة بسياسات التعليم"}, "projects_h2": {"ko": "주요 프로젝트", "en": "Selected Projects", "zh": "主要项目", "ru": "Избранные проекты", "ar": "مشاريع مختارة"}, "projects_intro": {"ko": "민관·산업·학계를 잇는 <b class=\"nb\">민관산학 거버넌스</b> 과제를 기획하고 수행합니다.", "en": "I design and deliver <b>public–private–industry–academia governance</b> projects that connect every stakeholder.", "zh": "策划并执行连接政府、产业与学界的<b>政产学研治理</b>项目。", "ru": "Разрабатываю и реализую проекты <b>управления «власть–бизнес–наука»</b>, связывая все стороны.", "ar": "أُصمّم وأُنفّذ مشاريع <b>حوكمة القطاعات العامة والخاصة والصناعية والأكاديمية</b> التي تربط جميع الأطراف."}, "p1_org": {"ko": "뉴홍콩시티 프로젝트", "en": "New Hong Kong City Project", "zh": "新香港城项目", "ru": "Проект «New Hong Kong City»", "ar": "مشروع نيو هونغ كونغ سيتي"}, "p1_title": {"ko": "뉴홍콩시티 프로젝트 타당성 조사 용역", "en": "New Hong Kong City — Feasibility Study", "zh": "新香港城项目可行性研究服务", "ru": "ТЭО проекта «New Hong Kong City»", "ar": "دراسة جدوى مشروع نيو هونغ كونغ سيتي"}, "p1_desc": {"ko": "뉴홍콩시티 프로젝트의 사업 타당성 조사(F/S) 용역을 수행했습니다.", "en": "Conducted the feasibility study (F/S) for the New Hong Kong City project.", "zh": "承担新香港城项目的事业可行性研究（F/S）服务。", "ru": "Провёл технико-экономическое обоснование (F/S) проекта «New Hong Kong City».", "ar": "أجريتُ دراسة الجدوى (F/S) لمشروع نيو هونغ كونغ سيتي."}, "p1_tags": {"ko": "<span class=\"tag\">타당성 조사 (F/S)</span><span class=\"tag\">민관산학 거버넌스</span><span class=\"tag\">정책·용역과제</span>", "en": "<span class=\"tag\">Feasibility Study (F/S)</span><span class=\"tag\">PPP–Academia Governance</span><span class=\"tag\">Policy / Commissioned</span>", "zh": "<span class=\"tag\">可行性研究 (F/S)</span><span class=\"tag\">政产学研治理</span><span class=\"tag\">政策·委托课题</span>", "ru": "<span class=\"tag\">ТЭО (F/S)</span><span class=\"tag\">Управление PPP–наука</span><span class=\"tag\">Политика / заказное</span>", "ar": "<span class=\"tag\">دراسة جدوى (F/S)</span><span class=\"tag\">حوكمة القطاعات</span><span class=\"tag\">سياسات / مهمة مكلَّفة</span>"}, "p2_org": {"ko": "인천광역시 강화군", "en": "Ganghwa-gun, Incheon", "zh": "仁川广域市江华郡", "ru": "Канхва-гун, Инчхон", "ar": "غانغوا، إنشيون"}, "p2_title": {"ko": "강화군 탄소중립 녹색성장 기본계획 수립 용역", "en": "Ganghwa Carbon-Neutral Green-Growth Master Plan", "zh": "江华郡碳中和绿色增长基本规划编制服务", "ru": "Генплан углеродной нейтральности Канхвы", "ar": "الخطة الأساسية للحياد الكربوني والنمو الأخضر لغانغوا"}, "p2_desc": {"ko": "강화군의 2050 탄소중립 달성을 위한 녹색성장 기본계획(2025–2034) 수립 용역. 기후변화 대응 동향·여건 분석, 부문별 온실가스 배출 현황 및 감축 로드맵, 강화군 탄소중립 비전·목표와 군민참여 활성화 방안을 다뤘습니다.", "en": "A master plan (2025–2034) for Ganghwa-gun’s 2050 carbon neutrality. Covered climate-response trends and conditions, sector-by-sector emissions and reduction roadmaps, the county’s vision and targets, and resident-participation strategies.", "zh": "为江华郡2050碳中和目标编制的绿色增长基本规划（2025–2034）。涵盖气候应对趋势与条件分析、各部门温室气体排放现状与减排路线图、碳中和愿景目标及居民参与活化方案。", "ru": "Генплан (2025–2034) для достижения углеродной нейтральности Канхвы к 2050. Анализ климатических тенденций и условий, выбросы по секторам и дорожные карты сокращения, видение и цели округа, вовлечение жителей.", "ar": "خطة أساسية (2025–2034) لتحقيق الحياد الكربوني في غانغوا بحلول 2050. شملت تحليل اتجاهات وظروف مواجهة تغيّر المناخ، وانبعاثات كل قطاع وخرائط طريق خفضها، ورؤية المقاطعة وأهدافها، وسبل إشراك السكان."}, "p2_tags": {"ko": "<span class=\"tag\">탄소중립 · 녹색성장</span><span class=\"tag\">공공 용역과제</span><span class=\"tag\">온실가스 감축 로드맵</span><span class=\"tag\">군민참여 계획</span>", "en": "<span class=\"tag\">Carbon Neutrality · Green Growth</span><span class=\"tag\">Public Commissioned</span><span class=\"tag\">GHG Reduction Roadmap</span><span class=\"tag\">Resident Participation</span>", "zh": "<span class=\"tag\">碳中和·绿色增长</span><span class=\"tag\">公共委托课题</span><span class=\"tag\">温室气体减排路线图</span><span class=\"tag\">居民参与计划</span>", "ru": "<span class=\"tag\">Углеродная нейтральность · «зелёный» рост</span><span class=\"tag\">Гос. заказ</span><span class=\"tag\">Дорожная карта по выбросам</span><span class=\"tag\">Вовлечение жителей</span>", "ar": "<span class=\"tag\">الحياد الكربوني · النمو الأخضر</span><span class=\"tag\">مشروع عام مكلَّف</span><span class=\"tag\">خارطة خفض الانبعاثات</span><span class=\"tag\">إشراك السكان</span>"}, "p3_org": {"ko": "2022 인천창업포럼 정책연구지원사업<br>인하대학교 경영대학", "en": "2022 Incheon Startup Forum Policy Research<br>Inha Univ. College of Business", "zh": "2022仁川创业论坛政策研究支持项目<br>仁荷大学经营大学", "ru": "Политисследование форума стартапов Инчхона 2022<br>Бизнес-колледж Университета Инха", "ar": "بحث سياسات منتدى إنشيون للريادة 2022<br>كلية الإدارة، جامعة إنها"}, "p3_title": {"ko": "계양 테크노밸리 창업 활성화 방안 정책연구", "en": "Gyeyang Techno-Valley Startup-Activation Policy Study", "zh": "桂阳科技谷创业活化方案政策研究", "ru": "Политисследование активации стартапов в Кеян Техно-Вэлли", "ar": "دراسة سياسات تنشيط ريادة الأعمال في وادي غيايانغ التقني"}, "p3_desc": {"ko": "계양 테크노밸리에 적합한 창업 활성화 방안 수립 정책연구. 국내외 혁신클러스터 성공사례와 국내 테크노밸리 현황을 비교 분석하고, 계양지구 핵심·권장업종(안)과 한국판 뉴딜(디지털·그린) 연계 방향을 제안했습니다.", "en": "Policy research designing startup-activation measures fit for Gyeyang Techno-Valley. Benchmarked domestic and global innovation clusters, proposed core / recommended industries for the district and links to the Korean New Deal (Digital · Green).", "zh": "为桂阳科技谷量身制定创业活化方案的政策研究。对比分析国内外创新集群成功案例与国内科技谷现状，提出桂阳地区核心·推荐产业（草案）及与韩版新政（数字·绿色）的衔接方向。", "ru": "Политисследование мер активации стартапов для Кеян Техно-Вэлли. Сравнение успешных инновационных кластеров мира и Кореи; предложены ключевые отрасли района и связь с «Корейским новым курсом» (Digital · Green).", "ar": "بحث سياسات لتصميم تدابير تنشيط ريادة الأعمال الملائمة لوادي غيايانغ التقني. تحليل مقارن لعناقيد الابتكار محليًا وعالميًا، واقتراح الصناعات الأساسية/الموصى بها للمنطقة وربطها بالصفقة الكورية الجديدة (الرقمية · الخضراء)."}, "p3_tags": {"ko": "<span class=\"tag\">정책연구</span><span class=\"tag\">혁신클러스터 분석</span><span class=\"tag\">창업 활성화 전략</span><span class=\"tag\">산업·고용 데이터 분석</span>", "en": "<span class=\"tag\">Policy Research</span><span class=\"tag\">Innovation-Cluster Analysis</span><span class=\"tag\">Startup-Activation Strategy</span><span class=\"tag\">Industry &amp; Employment Data</span>", "zh": "<span class=\"tag\">政策研究</span><span class=\"tag\">创新集群分析</span><span class=\"tag\">创业活化战略</span><span class=\"tag\">产业·就业数据分析</span>", "ru": "<span class=\"tag\">Политисследование</span><span class=\"tag\">Анализ инновац. кластеров</span><span class=\"tag\">Стратегия активации стартапов</span><span class=\"tag\">Данные промышл. и занятости</span>", "ar": "<span class=\"tag\">بحوث السياسات</span><span class=\"tag\">تحليل عناقيد الابتكار</span><span class=\"tag\">استراتيجية تنشيط الريادة</span><span class=\"tag\">تحليل بيانات الصناعة والتوظيف</span>"}, "contact_h2": {"ko": "어떤 일을 <span class=\"sp\">잇고</span><br>싶으신가요?", "en": "What would you<br>like to <span class=\"sp\">connect</span>?", "zh": "您想<span class=\"sp\">连接</span><br>什么样的事？", "ru": "Что бы вы хотели<br><span class=\"sp\">соединить</span>?", "ar": "ما الذي تودّ<br><span class=\"sp\">وصله</span>؟"}, "contact_p": {"ko": "무엇이든 맡겨주세요. 사람과 일, 그 사이를 잇겠습니다.", "en": "Bring me anything — I’ll connect the people and the work in between.", "zh": "任何事都可托付。我将在人与事之间架起桥梁。", "ru": "Доверьте мне что угодно — соединю людей и дела между ними.", "ar": "أوكِل إليّ أيَّ شيء — سأصِلُ بين الناس والعمل."}};
+(function(){
+var els=document.querySelectorAll('[data-i18n]');
+function set(l){els.forEach(function(e){var k=e.getAttribute('data-i18n');var t=I18N[k]&&I18N[k][l];if(t!=null)e.innerHTML=t;e.setAttribute('dir',l==='ar'?'rtl':'auto');});document.documentElement.lang=l;document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('#langSwitch button').forEach(function(b){b.classList.toggle('on',b.dataset.lang===l);});try{localStorage.setItem('cvlang',l);}catch(e){}}
+document.querySelectorAll('#langSwitch button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.lang);});});
+var sv=null;try{sv=localStorage.getItem('cvlang');}catch(e){}
+if(sv&&sv!=='ko')set(sv);
+})();
+</script>
 </body>
 </html>
